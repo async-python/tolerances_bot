@@ -1,0 +1,54 @@
+exclude = [
+    ".git",
+    "__pycache__",
+    "env",
+    "my_test",
+    "text",
+    ".env",
+    ".env_docker",
+    "migrations",
+    "old_project",
+    "__init__.py",
+    "run.py",
+    "venv",
+    ".ruff_cache",
+    "core/exceptions/error_responses/common_errors.py",
+    "core/exceptions/error_responses/user_errors.py",
+    "./app/locales/stub.pyi"
+]
+
+line-length = 80
+
+
+[lint]
+fixable = ["Q000", "D102", "D202", "D415", "D102", "D415", "Q001", "D300"]
+extend-select = [
+    "E501",
+    "A",    # flake8-builtins
+    "ANN",   # flake8-annotations
+    "B",   # flake8-bugbear
+    "C4",    # flake8-comprehensions
+    "COM", # lake8-commas
+    "E",   # pycodestyle
+    "F",   # Pyflakes
+    "UP",  # pyupgrade
+    "D",   # pydocstyle
+    "Q",    # flake-quotes
+    "N",    # pep8-naming
+    "T20",    # flake8-print
+    "I",    # isort
+    "S",    # flake8-bandit
+    "SIM",    # flake8-simplify
+    "C90",    # {name} is too complex
+    "RUF100",    # unused noqa
+  "UP",  # pyupgrade
+]
+ignore = ["A001", "A003", "E711", "F841", "B008", "C901", "C408", "SIM102",
+    "ANN401", "S104", "I001", "B904", "UP008", "S101", "S311", "A002",
+    "D205", "D209", "COM812"]
+
+[format]
+exclude = ["*.pyi"]
+
+[lint.pydocstyle]
+convention = "google"

@@ -1,0 +1,40 @@
+version: "3.3"
+
+networks:
+  p2p-network:
+    external: true
+
+volumes:
+  postgres_data:
+  redis_data:
+
+services:
+  bot_db:
+    container_name: bot_db
+    image: postgres:17
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DB_NAME}
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+
+  db_redis:
+    container_name: bot_db_redis
+    image: redis:alpine
+    restart: always
+    entrypoint: redis-server --appendonly yes --replica-read-only no --requirepass ${APP_REDIS_PASSWORD}
+    ports:
+      - 6379:6379
+    expose:
+      - 6379
+    env_file:
+      - .env
+    volumes:
+      - redis_data:/data
