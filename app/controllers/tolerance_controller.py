@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 
 
 class ToleranceController:
-    """Controller for admin role management module class."""
+    """Tolerance Controller class."""
 
     @classmethod
     async def validate_tolerance(

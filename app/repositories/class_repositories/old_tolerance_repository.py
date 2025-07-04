@@ -1,11 +1,11 @@
 """Old Tolerance repository."""
 
 from pydantic import BaseModel
-from sqlalchemy import insert
+from sqlalchemy import insert, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import OldTolerance
-from app.schemas import OldToleranceRepoSchema
+from app.schemas import OldToleranceRepoSchema, OldToleranceRepoRelatedSchema
 from core.database import Executor
 
 
@@ -35,5 +35,18 @@ class OldToleranceRepository(Executor):
         return await self.get_records(
             query=query,
             schema=OldToleranceRepoSchema,
+            session=session,
+        )
+
+    async def get_old_tolerance_related_tolerance(
+        self: type[Executor],
+        name: str,
+        session: AsyncSession,
+    ) -> type["OldToleranceRepoRelatedSchema"] | None:
+        """Get from db old tolerance with related tolerances."""
+        query = select(OldTolerance).where(OldTolerance.name == name)
+        return await self.get_record_relationship(
+            query=query,
+            schema=OldToleranceRepoRelatedSchema,
             session=session,
         )

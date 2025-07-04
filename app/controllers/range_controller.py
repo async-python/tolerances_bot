@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 
 
 class RangeController:
-    """Controller for admin role management module class."""
+    """Range Controller class."""
 
     @classmethod
     async def process_and_validate_range_ids(

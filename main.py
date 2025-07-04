@@ -11,6 +11,7 @@ from aiogram_dialog import setup_dialogs
 from fluentogram import TranslatorHub
 
 from app.handling.dialogs.find_tolerance.dialogs import find_tolerance_dialog
+from app.handling.dialogs.map_tolerance.dialogs import map_tolerance_dialog
 from app.handling.dialogs.start.dialogs import start_dialog
 from app.handling.handlers.commands import commands_router
 from app.middlewares.i18n import TranslatorRunnerMiddleware
@@ -58,6 +59,7 @@ async def main() -> None:
     dp.include_routers(
         start_dialog,
         find_tolerance_dialog,
+        map_tolerance_dialog,
     )
 
     setup_dialogs(dp)

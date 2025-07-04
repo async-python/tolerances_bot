@@ -1,4 +1,4 @@
-"""FInd tolerance dialog module."""
+"""Map tolerance dialog module."""
 
 from aiogram_dialog import Dialog, Window
 from aiogram_dialog.widgets.input import MessageInput
@@ -14,18 +14,18 @@ from app.handling.dialogs.map_tolerance.handlers import (
     on_button_continue_clicked,
     on_button_return_clicked,
 )
-from app.handling.states.find_tolerance import FindToleranceSG
+from app.handling.states.map_tolerance import MapToleranceSG
 
 
 # TODO correct it
-find_tolerance_dialog = Dialog(
+map_tolerance_dialog = Dialog(
     Window(
         Format(
-            "{answer}",
+            "{map_answer}",
         ),
         MessageInput(on_text_received),  # noqa
         getter=get_first_window_info,
-        state=FindToleranceSG.start,
+        state=MapToleranceSG.start,
     ),
     Window(
         Format(
@@ -44,6 +44,6 @@ find_tolerance_dialog = Dialog(
             ),
         ),
         getter=get_second_window_info,
-        state=FindToleranceSG.second,
+        state=MapToleranceSG.second,
     ),
 )

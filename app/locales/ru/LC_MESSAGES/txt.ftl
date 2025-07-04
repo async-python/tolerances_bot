@@ -1,6 +1,7 @@
 hello-user = Привет, { $username }. Выберите действие.
 
 button-button = Найти допуск размера
+button-transition_map = Найти аналог ОССТ допуска.
 
 button-pressed = Вы нажали на кнопку
 
@@ -21,6 +22,11 @@ ContinueAction-step = Продолжить
 
 back-step = Вернуться
 
+### Map tolerance texts
+
+map-tolerance-invite_text = Введите наименование допуска в система ОССТ.
+map-tolerance-found_text = Найдены следующие соответствия допусков: {$list}.
+
 ### Обработка ошибок
 
 messages-tolerance_unavailable = ❌ Допуск не существует.
@@ -28,6 +34,9 @@ messages-dimension_unavailable = ❌ Для данного размера доп
 messages-deviation_unavailable = ❌ Для данного допуска не существует такого размера.
 messages-wrong_value = Некорректный ввод, попробуйте еще раз.
 messages-wrong_tolerance_format = ⚠️ Неправильный формат допуска {$name}.
+
+messages-old_tolerance_unavailable = ❌ ОССТ допуск не существует.
+messages-old_tolerance_relations_unavailable = ❌Для ОССТ допуска не существует аналогов.
 
 errors-not_found = ❌ Не найдено: { $name }
 errors-conflict = ⚠️ Конфликт: { $name }

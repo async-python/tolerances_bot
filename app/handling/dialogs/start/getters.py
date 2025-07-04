@@ -21,5 +21,6 @@ async def get_hello(
     username = html.quote(event_from_user.full_name)
     return {
         "hello_user": i18n.hello.user(username=username),
-        "button_button": i18n.button.button(),
+        "button1": i18n.button.button(),
+        "button2": i18n.button.transition_map(),
     }

@@ -1,25 +1,19 @@
 """Find tolerance dialog handlers."""
 
 from typing import TYPE_CHECKING
-from uuid import UUID
-
 from aiogram.types import Message, CallbackQuery
 from aiogram_dialog import DialogManager, StartMode
 from aiogram_dialog.widgets.input import MessageInput
 from aiogram_dialog.widgets.kbd import Button
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.adapters.tolerance_adapter import ToleranceAdapter
-from app.adapters.tolerance_value_adapter import ToleranceValueAdapter
-from app.controllers.range_controller import RangeController
-from app.controllers.tolerance_controller import ToleranceController
-from app.controllers.tolerance_value_controller import ToleranceValueController
+from app.adapters.old_tolerance_adapter import OldToleranceAdapter
+from app.controllers.old_tolerance_controller import OldToleranceController
 from app.handling.states.start import StartSG
-from app.utils.calculators import calculate_deviations_localized
 from app.utils.decorators import inject_resources
 
 if TYPE_CHECKING:
-    from app.schemas import ToleranceValueRepoSchema
+    from app.schemas import OldToleranceRepoRelatedSchema
     from app.locales.stub import TranslatorRunner
 
 
@@ -32,6 +26,21 @@ async def on_text_received(
     session: AsyncSession,
 ) -> None:
     """Handle user's input tolerance."""
+    old_tolerance: (
+        type["OldToleranceRepoRelatedSchema"] | None
+    ) = await OldToleranceAdapter.get_old_tolerance_related_tolerance(
+        name=message.text,
+        session=session,
+    )
+    related_tolerances_list: str = (
+        await OldToleranceController.process_and_validate_related_tolerances(
+            old_tolerance=old_tolerance,
+            i18n=i18n,
+        )
+    )
+    await message.answer(
+        i18n.map.tolerance.found_text(list=related_tolerances_list)
+    )
     await dialog_manager.next()
 
 

@@ -12,6 +12,7 @@ class TranslatorRunner:
     next: Next
     ContinueAction: ContinueAction
     back: Back
+    map: Map
     messages: Messages
     errors: Errors
 
@@ -24,6 +25,9 @@ class Hello:
 class Button:
     @staticmethod
     def button() -> Literal["""Find dimensional tolerance."""]: ...
+
+    @staticmethod
+    def transition_map() -> Literal["""Find mapping for OSST tolerance."""]: ...
 
     @staticmethod
     def pressed() -> Literal["""You pressed the button."""]: ...
@@ -63,6 +67,18 @@ class Back:
     def step() -> Literal["""Return"""]: ...
 
 
+class Map:
+    tolerance: MapTolerance
+
+
+class MapTolerance:
+    @staticmethod
+    def invite_text() -> Literal["""Enter a russian OSST tolerance name."""]: ...
+
+    @staticmethod
+    def found_text(*, list) -> Literal["""Next tolerances found { $list }."""]: ...
+
+
 class Messages:
     @staticmethod
     def tolerance_unavailable() -> Literal["""❌ Tolerance doesn&#39;t exists."""]: ...
@@ -78,6 +94,12 @@ class Messages:
 
     @staticmethod
     def wrong_tolerance_format(*, name) -> Literal["""⚠️ Wrong tolerance format { $name }."""]: ...
+
+    @staticmethod
+    def old_tolerance_unavailable() -> Literal["""❌OSST tolerance doesn&#39;t exists."""]: ...
+
+    @staticmethod
+    def old_tolerance_relations_unavailable() -> Literal["""❌OSST tolerance relations doesn&#39;t exists."""]: ...
 
 
 class Errors:

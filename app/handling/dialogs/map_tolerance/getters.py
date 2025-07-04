@@ -18,7 +18,7 @@ async def get_first_window_info(
 ) -> dict[str, str]:
     """Getter for first window."""
     return {
-        "answer": i18n.text.method1(),
+        "map_answer": i18n.map.tolerance.invite_text(),
     }
 
 

@@ -1,6 +1,7 @@
 hello-user = Hello { $username }. Choose an action.
 
 button-button = Find dimensional tolerance.
+button-transition_map = Find mapping for OSST tolerance.
 
 button-pressed = You pressed the button.
 
@@ -21,6 +22,11 @@ ContinueAction-step = Continue
 
 back-step = Return
 
+### Map tolerance texts
+
+map-tolerance-invite_text = Enter a russian OSST tolerance name.
+map-tolerance-found_text = Next tolerances found: {$list}.
+
 ### Handle errors
 
 messages-tolerance_unavailable = ❌ Tolerance doesn't exists.
@@ -28,6 +34,9 @@ messages-dimension_unavailable = ❌ Tolerance dimension unavailable to size {$t
 messages-deviation_unavailable = ❌ Tolerance deviation doesn't exists.
 messages-wrong_value = Wrong value, please try again.
 messages-wrong_tolerance_format = ⚠️ Wrong tolerance format {$name}.
+
+messages-old_tolerance_unavailable = ❌OSST tolerance doesn't exists.
+messages-old_tolerance_relations_unavailable = ❌OSST tolerance relations doesn't exists.
 
 errors-not_found = ❌ Not found: { $name }
 errors-conflict = ⚠️ Conflict: { $name }
