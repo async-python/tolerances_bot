@@ -1,6 +1,6 @@
 """Range Controller module."""
 
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING
 from uuid import UUID
 
 from core.exceptions.error_classes.range import RangeException

@@ -20,7 +20,7 @@ services:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_DB_NAME}
-
+    restart: always
     volumes:
       - postgres_data:/var/lib/postgresql/data
 

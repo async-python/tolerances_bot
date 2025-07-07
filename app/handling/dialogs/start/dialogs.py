@@ -8,6 +8,7 @@ from app.handling.dialogs.start.getters import get_hello
 from app.handling.dialogs.start.handlers import (
     button_start_find_tolerance_click,
     button_start_map_tolerance_click,
+    button_start_calc_conditions_click,
 )
 from app.handling.states.start import StartSG
 
@@ -16,13 +17,18 @@ start_dialog = Dialog(
         Format("{hello_user}"),
         Button(
             Format("{button1}"),
-            id="button1_pressed",
+            id="start_button1_pressed",
             on_click=button_start_find_tolerance_click,
         ),
         Button(
             Format("{button2}"),
-            id="button2_pressed",
+            id="start_button2_pressed",
             on_click=button_start_map_tolerance_click,
+        ),
+        Button(
+            Format("{button3}"),
+            id="start_button3_pressed",
+            on_click=button_start_calc_conditions_click,
         ),
         getter=get_hello,
         state=StartSG.start,

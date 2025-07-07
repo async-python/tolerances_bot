@@ -17,7 +17,6 @@ from app.handling.dialogs.map_tolerance.handlers import (
 from app.handling.states.map_tolerance import MapToleranceSG
 
 
-# TODO correct it
 map_tolerance_dialog = Dialog(
     Window(
         Format(
@@ -34,12 +33,12 @@ map_tolerance_dialog = Dialog(
         Row(
             Button(
                 text=Format("{continue_step}"),
-                id="find_tol_button_1",
+                id="find_map_tol_button_1",
                 on_click=on_button_continue_clicked,
             ),
             Button(
                 text=Format("{back_step}"),
-                id="find_tol_button_2",
+                id="find_map_tol_button_2",
                 on_click=on_button_return_clicked,
             ),
         ),

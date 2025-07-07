@@ -1,6 +1,5 @@
 """Session Middleware."""
 
-import asyncio
 from collections.abc import Awaitable, Callable
 from typing import Any
 
@@ -24,7 +23,6 @@ class DbSessionMiddleware(BaseMiddleware):
         data: dict[str, Any],
     ) -> Any:
         """Addition a session to data."""
-        await asyncio.sleep(0.5)
         async with self.session_pool() as session:
             data["session"] = session
             return await handler(event, data)

@@ -1,8 +1,9 @@
 import logging
 from aiogram import Router, F
 from aiogram.filters import ExceptionTypeFilter
-from aiogram.types import ErrorEvent
+from aiogram.types import ErrorEvent, Update, Message
 from loguru import logger
+from pydantic import ValidationError
 
 from core.exceptions.base_exceptions import (
     BadRequestError,
@@ -12,6 +13,9 @@ from core.exceptions.base_exceptions import (
     UnauthorizedError,
     UnavailableServiceError,
     ValuePydanticError,
+)
+from core.exceptions.pydantic_errors_validation import (
+    generate_validation_error_response,
 )
 
 errors_router = Router()
