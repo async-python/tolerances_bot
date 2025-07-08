@@ -40,10 +40,10 @@ async def main() -> None:
     init_logging()
 
     redis = Redis.from_url(
-        url=CONFIG.APP.get_redis_url,
+        url=CONFIG.DBR.get_redis_url,
         decode_responses=True,
-        max_connections=CONFIG.APP.REDIS_POOL_SIZE,
-        socket_connect_timeout=CONFIG.APP.REDIS_CONNECT_TIMEOUT,
+        max_connections=CONFIG.DBR.REDIS_POOL_SIZE,
+        socket_connect_timeout=CONFIG.DBR.REDIS_CONNECT_TIMEOUT,
     )
 
     fsm_storage = RedisStorage(

@@ -17,6 +17,8 @@ if TYPE_CHECKING:
 
 
 class ValueType(Enum):
+    """Conditions value types."""
+
     DIAMETER = "DIAMETER"
     CUTTING_SPEED = "CUTTING_SPEED"
     SPINDLE_SPEED = "SPINDLE_SPEED"
@@ -45,7 +47,7 @@ class ConditionsController:
         conditions: dict,
         i18n: "TranslatorRunner",
     ) -> ConditionSchema:
-        """calculate and recalculate milling conditions."""
+        """Calculate and recalculate milling conditions."""
         conditions_model = ConditionSchema(**conditions)
 
         # set new value

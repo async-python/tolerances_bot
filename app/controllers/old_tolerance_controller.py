@@ -18,7 +18,8 @@ class OldToleranceController:
         old_tolerance: type["OldToleranceRepoRelatedSchema"] | None,
         i18n: "TranslatorRunner",
     ) -> str:
-        """Validate the old tolerance exists and related tolerances exists, returns list related tolerances in str."""
+        """Validate the old tolerance exists and related tolerances exists,
+        returns list related tolerances in str."""
         await OldToleranceException.raise_exception_if_not_found(
             old_tolerance=old_tolerance,
             i18n=i18n,

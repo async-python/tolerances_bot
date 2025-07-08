@@ -1,4 +1,5 @@
 """Milling calculation getters."""
+
 from typing import Any
 
 from app.utils.dialog_getters import get_data_window_generic
@@ -30,9 +31,10 @@ FIELD_MAP = {
 
 
 async def get_data_milling_window_1(
-        *args: Any,
-        **kwargs: dict,
+    *args: Any,
+    **kwargs: dict,
 ) -> dict[str, str]:
+    """Getter for tool diameter window 1."""
     return await get_data_window_generic(
         *args,
         **kwargs,
@@ -45,9 +47,10 @@ async def get_data_milling_window_1(
 
 
 async def get_data_milling_window_2(
-        *args: Any,
-        **kwargs: dict,
+    *args: Any,
+    **kwargs: dict,
 ) -> dict[str, str]:
+    """Getter for cutting speed window 2."""
     return await get_data_window_generic(
         *args,
         **kwargs,
@@ -60,9 +63,10 @@ async def get_data_milling_window_2(
 
 
 async def get_data_milling_window_3(
-        *args: Any,
-        **kwargs: dict,
+    *args: Any,
+    **kwargs: dict,
 ) -> dict[str, str]:
+    """Getter for spindle speed window 3."""
     return await get_data_window_generic(
         *args,
         **kwargs,
@@ -75,9 +79,10 @@ async def get_data_milling_window_3(
 
 
 async def get_data_milling_window_4(
-        *args: Any,
-        **kwargs: dict,
+    *args: Any,
+    **kwargs: dict,
 ) -> dict[str, str]:
+    """Getter for number of teeth window 4."""
     return await get_data_window_generic(
         *args,
         **kwargs,
@@ -90,9 +95,10 @@ async def get_data_milling_window_4(
 
 
 async def get_data_milling_window_5(
-        *args: Any,
-        **kwargs: dict,
+    *args: Any,
+    **kwargs: dict,
 ) -> dict[str, str]:
+    """Getter for feed per tooth window 5."""
     return await get_data_window_generic(
         *args,
         **kwargs,
@@ -108,6 +114,7 @@ async def get_data_milling_window_6(
     *args: Any,
     **kwargs: dict,
 ) -> dict[str, str]:
+    """Getter for feed rate window 6."""
     return await get_data_window_generic(
         *args,
         **kwargs,

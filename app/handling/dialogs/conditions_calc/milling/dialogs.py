@@ -64,7 +64,7 @@ conditions_milling_dialog = Dialog(
     Window(  # Window 2
         CONDITIONS_FORMAT,
         Format("{window_2_greeting}"),
-        MessageInput(on_cutting_speed_received),  # noqa
+        MessageInput(on_cutting_speed_received),
         Row(
             Button(Format("{Button_1}"), id="b_first", on_click=go_window_1),
             Button(Format("🔹 {Button_2}"), id="b_second"),

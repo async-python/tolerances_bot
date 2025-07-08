@@ -11,6 +11,10 @@ class AppSettings(BaseSettings):
 
     DEBUG: bool
     BOT_TOKEN: str
+
+    model_config = SettingsConfigDict(env_prefix="APP_")
+
+class RedisSettings(BaseSettings):
     REDIS_PASSWORD: str
     REDIS_PORT: int
     REDIS_HOST: str
@@ -18,7 +22,7 @@ class AppSettings(BaseSettings):
     REDIS_POOL_SIZE: int
     REDIS_CONNECT_TIMEOUT: int
 
-    model_config = SettingsConfigDict(env_prefix="APP_")
+    model_config = SettingsConfigDict(env_prefix="DBR_")
 
     @property
     def get_redis_url(self: type[BaseSettings]) -> str:
@@ -27,7 +31,6 @@ class AppSettings(BaseSettings):
             f"redis://:{self.REDIS_PASSWORD}@{self.REDIS_HOST}"
             f":{self.REDIS_PORT}/{self.REDIS_DB}"
         )
-
 
 class DatabaseSettings(BaseSettings):
     """Database settings."""
@@ -55,6 +58,7 @@ class Config(BaseException):
 
     APP: AppSettings = AppSettings()
     DB: DatabaseSettings = DatabaseSettings()
+    DBR: RedisSettings = RedisSettings()
 
 
 CONFIG = Config()

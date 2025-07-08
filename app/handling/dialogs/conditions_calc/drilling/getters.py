@@ -1,4 +1,6 @@
-from typing import TYPE_CHECKING
+"""Drilling calculation getters."""
+
+from typing import TYPE_CHECKING, Any
 
 from app.utils.dialog_getters import get_data_window_generic
 
@@ -29,10 +31,15 @@ FIELD_MAP = {
 
 
 def turning_feed_per_rev_prompt(i18n: "TranslatorRunner") -> str:
+    """Getter for per rev prompt."""
     return i18n.conditions.prompt.feed_per_rev.text()
 
 
-async def get_data_drilling_window_1(*args, **kwargs):
+async def get_data_drilling_window_1(
+    *args: Any,
+    **kwargs: dict,
+) -> dict[str, str]:
+    """Getter tool diameter window 1."""
     return await get_data_window_generic(
         *args,
         **kwargs,
@@ -44,7 +51,11 @@ async def get_data_drilling_window_1(*args, **kwargs):
     )
 
 
-async def get_data_drilling_window_2(*args, **kwargs):
+async def get_data_drilling_window_2(
+    *args: Any,
+    **kwargs: dict,
+) -> dict[str, str]:
+    """Getter cutting speed window 2."""
     return await get_data_window_generic(
         *args,
         **kwargs,
@@ -56,7 +67,11 @@ async def get_data_drilling_window_2(*args, **kwargs):
     )
 
 
-async def get_data_drilling_window_3(*args, **kwargs):
+async def get_data_drilling_window_3(
+    *args: Any,
+    **kwargs: dict,
+) -> dict[str, str]:
+    """Getter spindle speed window 3."""
     return await get_data_window_generic(
         *args,
         **kwargs,
@@ -68,7 +83,11 @@ async def get_data_drilling_window_3(*args, **kwargs):
     )
 
 
-async def get_data_drilling_window_4(*args, **kwargs):
+async def get_data_drilling_window_4(
+    *args: Any,
+    **kwargs: dict,
+) -> dict[str, str]:
+    """Getter feed per rev window 4."""
     return await get_data_window_generic(
         *args,
         **kwargs,
@@ -81,7 +100,11 @@ async def get_data_drilling_window_4(*args, **kwargs):
     )
 
 
-async def get_data_drilling_window_5(*args, **kwargs):
+async def get_data_drilling_window_5(
+    *args: Any,
+    **kwargs: dict,
+) -> dict[str, str]:
+    """Getter feed rate window 5."""
     return await get_data_window_generic(
         *args,
         **kwargs,
