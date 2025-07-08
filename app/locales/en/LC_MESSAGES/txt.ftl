@@ -67,6 +67,7 @@ conditions-prompt-cutting_speed-text = Input cutting speed:
 conditions-prompt-spindle_speed-text = Input spindle speed:
 conditions-prompt-number_of_teeth-text = Input number of teeth:
 conditions-prompt-feed_per_tooth-text = Input feed per tooth:
+conditions-prompt-feed_per_rev-text = Input feed per rev:
 conditions-prompt-feed_rate-text = Input feed rate:
 
 conditions-milling-tool_diameter-text = Tool diameter: {$value} mm.

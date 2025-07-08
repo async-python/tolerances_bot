@@ -10,11 +10,14 @@ if TYPE_CHECKING:
 
 
 class ToleranceValueException:
+    """Tolerance value exception class."""
+
     @staticmethod
     async def raise_exception_if_not_found(
         tolerance_value: type["ToleranceValueRepoSchema"] | None,
         i18n: "TranslatorRunner",
     ) -> bool:
+        """Raises an exception if wrong tolerance deviations."""
         if (
             not tolerance_value
             or tolerance_value.upper_value is None

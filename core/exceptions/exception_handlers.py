@@ -1,9 +1,9 @@
+"""Application exception handlers."""
+
 import logging
-from aiogram import Router, F
+from aiogram import Router, F, Dispatcher
 from aiogram.filters import ExceptionTypeFilter
-from aiogram.types import ErrorEvent, Update, Message
-from loguru import logger
-from pydantic import ValidationError
+from aiogram.types import ErrorEvent
 
 from core.exceptions.base_exceptions import (
     BadRequestError,
@@ -14,14 +14,12 @@ from core.exceptions.base_exceptions import (
     UnavailableServiceError,
     ValuePydanticError,
 )
-from core.exceptions.pydantic_errors_validation import (
-    generate_validation_error_response,
-)
 
 errors_router = Router()
 
 
-async def generic_error_handler(event: ErrorEvent):
+async def generic_error_handler(event: ErrorEvent) -> None:
+    """Outputs error message."""
     await event.update.message.answer(str(event.exception))
 
 
@@ -41,9 +39,11 @@ errors_router.error(ExceptionTypeFilter(ValuePydanticError))(
 
 
 @errors_router.error(
-    ExceptionTypeFilter(Exception), F.update.message.as_("message")
+    ExceptionTypeFilter(Exception),
+    F.update.message.as_("message"),
 )
-async def fallback_exception_handler(event: ErrorEvent):
+async def fallback_exception_handler(event: ErrorEvent) -> None:
+    """Common exception handler."""
     # logger.error(event.exception)
     logging.exception(event.exception)
     await event.update.message.answer(
@@ -51,6 +51,8 @@ async def fallback_exception_handler(event: ErrorEvent):
     )
 
 
-def register_exception_handlers(dp):
+def register_exception_handlers(
+    dp: Dispatcher,
+) -> None:
     """Register the exception handlers."""
     dp.include_router(errors_router)

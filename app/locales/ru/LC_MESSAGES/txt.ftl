@@ -67,6 +67,7 @@ conditions-prompt-cutting_speed-text = Введите скорость реза�
 conditions-prompt-spindle_speed-text = Введите обороты шпинделя:
 conditions-prompt-number_of_teeth-text = Введите количество зубьев:
 conditions-prompt-feed_per_tooth-text = Введите подачу на зуб:
+conditions-prompt-feed_per_rev-text = Введите подачу на оборот:
 conditions-prompt-feed_rate-text = Введите минутную подачу:
 
 conditions-milling-tool_diameter-text = Диаметр фрезы: {$value} mm.

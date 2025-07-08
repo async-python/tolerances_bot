@@ -187,16 +187,23 @@ class Conditions:
 
 class ConditionsPrompt:
     tool_diameter: ConditionsPromptTool_diameter
+    part_diameter: ConditionsPromptPart_diameter
     cutting_speed: ConditionsPromptCutting_speed
     spindle_speed: ConditionsPromptSpindle_speed
     number_of_teeth: ConditionsPromptNumber_of_teeth
     feed_per_tooth: ConditionsPromptFeed_per_tooth
+    feed_per_rev: ConditionsPromptFeed_per_rev
     feed_rate: ConditionsPromptFeed_rate
 
 
 class ConditionsPromptTool_diameter:
     @staticmethod
     def text() -> Literal["""Input a tool diameter:"""]: ...
+
+
+class ConditionsPromptPart_diameter:
+    @staticmethod
+    def text() -> Literal["""Input a part diameter:"""]: ...
 
 
 class ConditionsPromptCutting_speed:
@@ -217,6 +224,11 @@ class ConditionsPromptNumber_of_teeth:
 class ConditionsPromptFeed_per_tooth:
     @staticmethod
     def text() -> Literal["""Input feed per tooth:"""]: ...
+
+
+class ConditionsPromptFeed_per_rev:
+    @staticmethod
+    def text() -> Literal["""Input feed per rev:"""]: ...
 
 
 class ConditionsPromptFeed_rate:

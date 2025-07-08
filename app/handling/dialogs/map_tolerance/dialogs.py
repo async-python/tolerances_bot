@@ -22,7 +22,7 @@ map_tolerance_dialog = Dialog(
         Format(
             "{map_answer}",
         ),
-        MessageInput(on_text_received),  # noqa
+        MessageInput(on_text_received),
         getter=get_first_window_info,
         state=MapToleranceSG.start,
     ),

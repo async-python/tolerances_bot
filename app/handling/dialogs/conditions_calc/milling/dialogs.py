@@ -28,7 +28,8 @@ from app.handling.dialogs.conditions_calc.milling.handlers import (
     on_teeth_number_received,
     on_feed_per_tooth_received,
     on_spindle_speed_received,
-    on_feed_rate_received, go_return,
+    on_feed_rate_received,
+    go_return,
 )
 
 from app.handling.states.conditions_calc import ConditionsMillingSG

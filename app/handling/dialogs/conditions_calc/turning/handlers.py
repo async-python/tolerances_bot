@@ -11,7 +11,10 @@ from app.controllers.conditions_controller import (
     ConditionsController,
     ValueType,
 )
-from app.handling.states.conditions_calc import ConditionsTurningSG, ConditionsStartSG
+from app.handling.states.conditions_calc import (
+    ConditionsTurningSG,
+    ConditionsStartSG,
+)
 from app.handling.states.start import StartSG
 from app.utils.decorators import inject_resources
 
@@ -206,6 +209,7 @@ async def go_window_5(
 ) -> None:
     """Switch to window 5."""
     await dialog_manager.switch_to(state=ConditionsTurningSG.window_5)
+
 
 async def go_return(
     callback: CallbackQuery,

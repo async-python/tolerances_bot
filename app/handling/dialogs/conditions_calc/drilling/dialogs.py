@@ -34,7 +34,7 @@ from app.handling.states.conditions_calc import ConditionsDrillingSG
 
 CONDITIONS_FORMAT = Format(
     "{tool_diameter} \n {cutting_speed} \n {spindle_speed} "
-    "\n {feed_per_rev} \n {feed_rate}"
+    "\n {feed_per_tooth} \n {feed_rate}"
 )
 
 conditions_drilling_dialog = Dialog(

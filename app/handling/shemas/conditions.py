@@ -15,8 +15,9 @@ class ConditionSchema(BaseModel):
 
     @model_validator(mode="before")
     @classmethod
-    def replace_commas(cls, data):
-        """Автоматически заменяет ',' на '.' в строках, если поле ожидает float."""
+    def replace_commas(cls: object, data: dict) -> dict:
+        """Automatically replaces ',' with '.' in strings
+        if the field expects a float."""
         if isinstance(data, dict):
             for key, value in data.items():
                 if isinstance(value, str) and "," in value:

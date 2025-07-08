@@ -1,13 +1,8 @@
-from typing import TYPE_CHECKING
-from aiogram.types import User
-from aiogram_dialog import DialogManager
-from fluentogram import TranslatorRunner
-from app.handling.shemas.conditions import ConditionSchema
+"""Milling calculation getters."""
+from typing import Any
 
-if TYPE_CHECKING:
-    from app.locales.stub import TranslatorRunner
+from app.utils.dialog_getters import get_data_window_generic
 
-PLUG = "__"
 BUTTONS = {
     "Button_1": "D",
     "Button_2": "Vc",
@@ -34,86 +29,91 @@ FIELD_MAP = {
 }
 
 
-async def get_data_milling_window_generic(
-    dialog_manager: DialogManager,
-    i18n: TranslatorRunner,
-    event_from_user: User,
-    active_field: str,
-    window_greeting_key: str,
-    **kwargs: dict,
+async def get_data_milling_window_1(
+        *args: Any,
+        **kwargs: dict,
 ) -> dict[str, str]:
-    """Universal getter for milling windows."""
-    data = dialog_manager.dialog_data.get("milling", {})
-    conditions = ConditionSchema(**data)
-
-    result = {
-        f"{window_greeting_key}": getattr(
-            i18n.conditions.prompt, active_field
-        ).text(),
-        "button_forward": i18n.transition.button.forward(),
-        "button_back": i18n.transition.button.back(),
-        "button_cancel": i18n.transition.button.cancel(),
-        "button_return": i18n.transition.button.return_prev(),
-    }
-
-    for field in FIELD_MAP.keys():
-        value = getattr(conditions, field) or PLUG
-        prefix = "->" if field == active_field else "--"
-        result[field] = f"{prefix}{FIELD_MAP[field](i18n, value)}"
-
-    result |= BUTTONS
-    return result
-
-
-async def get_data_milling_window_1(*args, **kwargs):
-    return await get_data_milling_window_generic(
+    return await get_data_window_generic(
         *args,
         **kwargs,
         active_field="tool_diameter",
         window_greeting_key="window_1_greeting",
+        data_key="milling",
+        field_map=FIELD_MAP,
+        buttons=BUTTONS,
     )
 
 
-async def get_data_milling_window_2(*args, **kwargs):
-    return await get_data_milling_window_generic(
+async def get_data_milling_window_2(
+        *args: Any,
+        **kwargs: dict,
+) -> dict[str, str]:
+    return await get_data_window_generic(
         *args,
         **kwargs,
         active_field="cutting_speed",
         window_greeting_key="window_2_greeting",
+        data_key="milling",
+        field_map=FIELD_MAP,
+        buttons=BUTTONS,
     )
 
 
-async def get_data_milling_window_3(*args, **kwargs):
-    return await get_data_milling_window_generic(
+async def get_data_milling_window_3(
+        *args: Any,
+        **kwargs: dict,
+) -> dict[str, str]:
+    return await get_data_window_generic(
         *args,
         **kwargs,
         active_field="spindle_speed",
         window_greeting_key="window_3_greeting",
+        data_key="milling",
+        field_map=FIELD_MAP,
+        buttons=BUTTONS,
     )
 
 
-async def get_data_milling_window_4(*args, **kwargs):
-    return await get_data_milling_window_generic(
+async def get_data_milling_window_4(
+        *args: Any,
+        **kwargs: dict,
+) -> dict[str, str]:
+    return await get_data_window_generic(
         *args,
         **kwargs,
         active_field="number_of_teeth",
         window_greeting_key="window_4_greeting",
+        data_key="milling",
+        field_map=FIELD_MAP,
+        buttons=BUTTONS,
     )
 
 
-async def get_data_milling_window_5(*args, **kwargs):
-    return await get_data_milling_window_generic(
+async def get_data_milling_window_5(
+        *args: Any,
+        **kwargs: dict,
+) -> dict[str, str]:
+    return await get_data_window_generic(
         *args,
         **kwargs,
         active_field="feed_per_tooth",
         window_greeting_key="window_5_greeting",
+        data_key="milling",
+        field_map=FIELD_MAP,
+        buttons=BUTTONS,
     )
 
 
-async def get_data_milling_window_6(*args, **kwargs):
-    return await get_data_milling_window_generic(
+async def get_data_milling_window_6(
+    *args: Any,
+    **kwargs: dict,
+) -> dict[str, str]:
+    return await get_data_window_generic(
         *args,
         **kwargs,
         active_field="feed_rate",
         window_greeting_key="window_6_greeting",
+        data_key="milling",
+        field_map=FIELD_MAP,
+        buttons=BUTTONS,
     )

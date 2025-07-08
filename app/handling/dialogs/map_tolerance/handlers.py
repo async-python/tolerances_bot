@@ -27,7 +27,7 @@ async def on_text_received(
 ) -> None:
     """Handle user's input tolerance."""
     old_tolerance: (
-        type["OldToleranceRepoRelatedSchema"] | None
+        type[OldToleranceRepoRelatedSchema] | None
     ) = await OldToleranceAdapter.get_old_tolerance_related_tolerance(
         name=message.text,
         session=session,

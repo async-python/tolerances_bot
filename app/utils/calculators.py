@@ -48,7 +48,8 @@ async def calculate_spindle_speed(
     cutting_speed: float,
     tool_diameter: float,
 ) -> float:
-    """Вычисляет частоту вращения шпинделя (об/мин) по скорости резания и диаметру."""
+    """Calculates the spindle speed (rpm) based on the
+    cutting speed and diameter."""
     return round((1000 * cutting_speed) / (math.pi * tool_diameter), 0)
 
 
@@ -57,7 +58,8 @@ async def calculate_feed_rate(
     number_of_teeth: int,
     feed_per_tooth: float,
 ) -> float:
-    """Вычисляет минутную подачу (мм/мин) по частоте вращения, количеству зубьев и подаче на зуб."""
+    """Calculates the minute feed (mm/min) based on rotation speed,
+    number of teeth and feed per tooth."""
     return round((spindle_speed * number_of_teeth * feed_per_tooth), 0)
 
 
@@ -66,7 +68,8 @@ async def calculate_feed_per_tooth(
     spindle_speed: float,
     number_of_teeth: int,
 ) -> float:
-    """Вычисляет подачу на зуб (мм/зуб), если известны минутная подача, частота вращения и количество зубьев."""
+    """Calculates the feed per tooth (mm/tooth) if the minute feed,
+    rotation speed and number of teeth are known."""
     if spindle_speed <= 0 or number_of_teeth <= 0:
         raise ValueError(
             "Spindle speed and number of teeth must be greater than zero."
@@ -78,5 +81,6 @@ async def calculate_cutting_speed(
     spindle_speed: float,
     tool_diameter: float,
 ) -> float:
-    """Вычисляет скорость резания (м/мин), если известны частота вращения и диаметр фрезы."""
+    """Calculates the cutting speed (m/min) if the rotation speed
+    and diameter of the milling cutter are known."""
     return round((math.pi * tool_diameter * spindle_speed) / 1000, 1)

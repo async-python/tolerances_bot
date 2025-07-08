@@ -6,11 +6,11 @@ from aiogram_dialog.widgets.kbd import Button, Row
 from aiogram_dialog.widgets.text import Format
 
 from app.handling.dialogs.conditions_calc.turning.getters import (
-    get_data_drilling_window_1,
-    get_data_drilling_window_2,
-    get_data_drilling_window_3,
-    get_data_drilling_window_4,
-    get_data_drilling_window_5,
+    get_data_turning_window_1,
+    get_data_turning_window_2,
+    get_data_turning_window_3,
+    get_data_turning_window_4,
+    get_data_turning_window_5,
 )
 from app.handling.dialogs.conditions_calc.turning.handlers import (
     go_window_1,
@@ -34,7 +34,7 @@ from app.handling.states.conditions_calc import ConditionsTurningSG
 
 CONDITIONS_FORMAT = Format(
     "{tool_diameter} \n {cutting_speed} \n {spindle_speed} "
-    "\n {feed_per_rev} \n {feed_rate}"
+    "\n {feed_per_tooth} \n {feed_rate}"
 )
 
 conditions_turning_dialog = Dialog(
@@ -55,13 +55,13 @@ conditions_turning_dialog = Dialog(
             ),
             Button(Format("{button_forward}"), id="b_next", on_click=go_next),
         ),
-        getter=get_data_drilling_window_1,
+        getter=get_data_turning_window_1,
         state=ConditionsTurningSG.window_1,
     ),
     Window(  # Window 2
         CONDITIONS_FORMAT,
         Format("{window_2_greeting}"),
-        MessageInput(on_cutting_speed_received),  # noqa
+        MessageInput(on_cutting_speed_received),
         Row(
             Button(Format("{Button_1}"), id="b_first", on_click=go_window_1),
             Button(Format("🔹 {Button_2}"), id="b_second"),
@@ -73,7 +73,7 @@ conditions_turning_dialog = Dialog(
             Button(Format("{button_back}"), id="b_back", on_click=go_back),
             Button(Format("{button_forward}"), id="b_next", on_click=go_next),
         ),
-        getter=get_data_drilling_window_2,
+        getter=get_data_turning_window_2,
         state=ConditionsTurningSG.window_2,
     ),
     Window(  # Window 3
@@ -91,7 +91,7 @@ conditions_turning_dialog = Dialog(
             Button(Format("{button_back}"), id="b_back", on_click=go_back),
             Button(Format("{button_forward}"), id="b_next", on_click=go_next),
         ),
-        getter=get_data_drilling_window_3,
+        getter=get_data_turning_window_3,
         state=ConditionsTurningSG.window_3,
     ),
     Window(  # Window 4
@@ -109,7 +109,7 @@ conditions_turning_dialog = Dialog(
             Button(Format("{button_back}"), id="b_back", on_click=go_back),
             Button(Format("{button_forward}"), id="b_next", on_click=go_next),
         ),
-        getter=get_data_drilling_window_4,
+        getter=get_data_turning_window_4,
         state=ConditionsTurningSG.window_4,
     ),
     Window(  # Window 5
@@ -127,7 +127,7 @@ conditions_turning_dialog = Dialog(
             Button(Format("{button_back}"), id="b_back", on_click=go_back),
             Button(Format("{button_cancel}"), id="b_quit", on_click=go_quit),
         ),
-        getter=get_data_drilling_window_5,
+        getter=get_data_turning_window_5,
         state=ConditionsTurningSG.window_5,
     ),
     on_start=on_start,

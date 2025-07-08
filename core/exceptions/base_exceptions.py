@@ -14,6 +14,7 @@ class BaseAppError(Exception):
         self.name = name
 
     def __str__(self: object) -> str:
+        """String representation of the error."""
         return self.name if isinstance(self.name, str) else self.name.message
 
 

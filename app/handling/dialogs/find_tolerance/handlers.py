@@ -54,7 +54,7 @@ async def on_text_received(
     )
 
     tolerance_value: (
-        type["ToleranceValueRepoSchema"] | None
+        type[ToleranceValueRepoSchema] | None
     ) = await ToleranceValueAdapter.get_tolerance_value(
         target_value=target_value,
         tolerance_id=response_tolerance.id,
