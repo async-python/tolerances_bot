@@ -5,11 +5,11 @@ from aiogram_dialog.widgets.input import MessageInput
 from aiogram_dialog.widgets.kbd import Button, Row
 from aiogram_dialog.widgets.text import Format
 
-from app.handling.dialogs.map_tolerance.getters import (
+from app.handling.dialogs.old_tolerance.getters import (
     get_first_window_info,
     get_second_window_info,
 )
-from app.handling.dialogs.map_tolerance.handlers import (
+from app.handling.dialogs.old_tolerance.handlers import (
     on_text_received,
     on_button_continue_clicked,
     on_button_return_clicked,
@@ -37,7 +37,7 @@ map_tolerance_dialog = Dialog(
                 on_click=on_button_continue_clicked,
             ),
             Button(
-                text=Format("{back_step}"),
+                text=Format("{return_prev}"),
                 id="find_map_tol_button_2",
                 on_click=on_button_return_clicked,
             ),

@@ -37,7 +37,7 @@ find_tolerance_dialog = Dialog(
                 on_click=on_button_continue_clicked,
             ),
             Button(
-                text=Format("{back_step}"),
+                text=Format("{return_prev}"),
                 id="find_tol_button_2",
                 on_click=on_button_return_clicked,
             ),

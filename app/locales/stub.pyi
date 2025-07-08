@@ -4,52 +4,42 @@ from typing import Literal
 class TranslatorRunner:
     def get(self, path: str, **kwargs) -> str: ...
     
-    hello: Hello
-    button: Button
-    no: No
-    text: Text
+    dialog: Dialog
     tolerance: Tolerance
-    next: Next
-    ContinueAction: ContinueAction
-    back: Back
-    step: Step
-    map: Map
+    old: Old
     messages: Messages
-    errors: Errors
     conditions: Conditions
     transition: Transition
 
 
-class Hello:
+class Dialog:
+    start: DialogStart
+
+
+class DialogStart:
+    prompt: DialogStartPrompt
+    button: DialogStartButton
+
+
+class DialogStartPrompt:
     @staticmethod
-    def user(*, username) -> Literal["""Hello { $username }. Choose an action."""]: ...
+    def text(*, username) -> Literal["""Hello { $username }. Choose an action."""]: ...
 
 
-class Button:
+class DialogStartButton:
     @staticmethod
-    def button() -> Literal["""Find dimensional tolerance."""]: ...
-
-    @staticmethod
-    def transition_map() -> Literal["""Find mapping for OSST tolerance."""]: ...
+    def tolerance() -> Literal["""Find dimensional tolerance."""]: ...
 
     @staticmethod
-    def transition_calc() -> Literal["""Calculate cutting conditions."""]: ...
+    def old_tolerance() -> Literal["""Find mapping for OSST tolerance."""]: ...
 
     @staticmethod
-    def pressed() -> Literal["""You pressed the button."""]: ...
-
-
-class No:
-    @staticmethod
-    def copy() -> Literal["""This type of update is not supported by the send_copy method."""]: ...
-
-
-class Text:
-    @staticmethod
-    def method1() -> Literal["""Enter the tolerance value e.g 20H7."""]: ...
+    def conditions() -> Literal["""Calculate cutting conditions."""]: ...
 
 
 class Tolerance:
+    prompt: TolerancePrompt
+
     @staticmethod
     def answer(*, upper, lower, max, avg, min) -> Literal["""upper deviation = { $upper }
 lower deviation = { $lower }
@@ -58,58 +48,23 @@ max size = { $max }
 min size = { $min }"""]: ...
 
 
-class Next:
-    @staticmethod
-    def step() -> Literal["""You can do next:"""]: ...
-
-
-class ContinueAction:
-    @staticmethod
-    def step() -> Literal["""Continue"""]: ...
-
-
-class Back:
-    @staticmethod
-    def step() -> Literal["""Return"""]: ...
-
-
-class Step:
-    calc: StepCalc
-
-
-class StepCalc:
-    first: StepCalcFirst
-
-
-class StepCalcFirst:
-    milling: StepCalcFirstMilling
-    drilling: StepCalcFirstDrilling
-    turning: StepCalcFirstTurning
+class TolerancePrompt:
+    next: TolerancePromptNext
 
     @staticmethod
-    def message() -> Literal["""Choose operation type:"""]: ...
+    def text() -> Literal["""Enter the tolerance value e.g 20H7."""]: ...
 
 
-class StepCalcFirstMilling:
+class TolerancePromptNext:
     @staticmethod
-    def button() -> Literal["""Milling"""]: ...
+    def text() -> Literal["""You can do next:"""]: ...
 
 
-class StepCalcFirstDrilling:
-    @staticmethod
-    def button() -> Literal["""Drilling"""]: ...
+class Old:
+    tolerance: OldTolerance
 
 
-class StepCalcFirstTurning:
-    @staticmethod
-    def button() -> Literal["""Turning"""]: ...
-
-
-class Map:
-    tolerance: MapTolerance
-
-
-class MapTolerance:
+class OldTolerance:
     @staticmethod
     def invite_text() -> Literal["""Enter a russian OSST tolerance name."""]: ...
 
@@ -153,36 +108,28 @@ class MessagesConditions:
     def wrong_value() -> Literal["""The value must be greater than 0."""]: ...
 
 
-class Errors:
-    @staticmethod
-    def not_found(*, name) -> Literal["""❌ Not found: { $name }"""]: ...
-
-    @staticmethod
-    def conflict(*, name) -> Literal["""⚠️ Conflict: { $name }"""]: ...
-
-    @staticmethod
-    def unauthorized(*, name) -> Literal["""🔒 Unauthorized: { $name }"""]: ...
-
-    @staticmethod
-    def forbidden(*, name) -> Literal["""🚫 Forbidden: { $name }"""]: ...
-
-    @staticmethod
-    def bad_request(*, name) -> Literal["""⚠️ Bad request: { $name }"""]: ...
-
-    @staticmethod
-    def unavailable_service(*, name) -> Literal["""⚠️ Unavailable service: { $name }"""]: ...
-
-    @staticmethod
-    def validation_error(*, name) -> Literal["""⚠️ Validation error: { $name }"""]: ...
-
-    @staticmethod
-    def unexpected_error() -> Literal["""🚨 Unexpected error, try again."""]: ...
-
-
 class Conditions:
+    start: ConditionsStart
     prompt: ConditionsPrompt
-    milling: ConditionsMilling
     common: ConditionsCommon
+
+
+class ConditionsStart:
+    button: ConditionsStartButton
+
+    @staticmethod
+    def prompt() -> Literal["""Choose operation type:"""]: ...
+
+
+class ConditionsStartButton:
+    @staticmethod
+    def milling() -> Literal["""Milling"""]: ...
+
+    @staticmethod
+    def drilling() -> Literal["""Drilling"""]: ...
+
+    @staticmethod
+    def turning() -> Literal["""Turning"""]: ...
 
 
 class ConditionsPrompt:
@@ -236,48 +183,45 @@ class ConditionsPromptFeed_rate:
     def text() -> Literal["""Input feed rate:"""]: ...
 
 
-class ConditionsMilling:
-    tool_diameter: ConditionsMillingTool_diameter
-    cutting_speed: ConditionsMillingCutting_speed
-    spindle_speed: ConditionsMillingSpindle_speed
-    number_of_teeth: ConditionsMillingNumber_of_teeth
-    feed_per_tooth: ConditionsMillingFeed_per_tooth
-    feed_rate: ConditionsMillingFeed_rate
+class ConditionsCommon:
+    tool_diameter: ConditionsCommonTool_diameter
+    cutting_speed: ConditionsCommonCutting_speed
+    spindle_speed: ConditionsCommonSpindle_speed
+    number_of_teeth: ConditionsCommonNumber_of_teeth
+    feed_per_tooth: ConditionsCommonFeed_per_tooth
+    feed_rate: ConditionsCommonFeed_rate
+    feed_per_rev: ConditionsCommonFeed_per_rev
+    part_diameter: ConditionsCommonPart_diameter
 
 
-class ConditionsMillingTool_diameter:
+class ConditionsCommonTool_diameter:
     @staticmethod
     def text(*, value) -> Literal["""Tool diameter: { $value } mm."""]: ...
 
 
-class ConditionsMillingCutting_speed:
+class ConditionsCommonCutting_speed:
     @staticmethod
     def text(*, value) -> Literal["""Cutting speed: { $value } m/min."""]: ...
 
 
-class ConditionsMillingSpindle_speed:
+class ConditionsCommonSpindle_speed:
     @staticmethod
     def text(*, value) -> Literal["""Spindle speed: { $value } rev/min."""]: ...
 
 
-class ConditionsMillingNumber_of_teeth:
+class ConditionsCommonNumber_of_teeth:
     @staticmethod
     def text(*, value) -> Literal["""Number of teeth: { $value } pieces."""]: ...
 
 
-class ConditionsMillingFeed_per_tooth:
+class ConditionsCommonFeed_per_tooth:
     @staticmethod
     def text(*, value) -> Literal["""Feed per tooth: { $value } mm."""]: ...
 
 
-class ConditionsMillingFeed_rate:
+class ConditionsCommonFeed_rate:
     @staticmethod
     def text(*, value) -> Literal["""Feed rate: { $value } mm/min."""]: ...
-
-
-class ConditionsCommon:
-    feed_per_rev: ConditionsCommonFeed_per_rev
-    part_diameter: ConditionsCommonPart_diameter
 
 
 class ConditionsCommonFeed_per_rev:
@@ -306,4 +250,7 @@ class TransitionButton:
 
     @staticmethod
     def return_prev() -> Literal["""Return"""]: ...
+
+    @staticmethod
+    def continue_dialog() -> Literal["""Continue"""]: ...
 

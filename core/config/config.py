@@ -14,7 +14,10 @@ class AppSettings(BaseSettings):
 
     model_config = SettingsConfigDict(env_prefix="APP_")
 
+
 class RedisSettings(BaseSettings):
+    """Redis settings."""
+
     REDIS_PASSWORD: str
     REDIS_PORT: int
     REDIS_HOST: str
@@ -31,6 +34,7 @@ class RedisSettings(BaseSettings):
             f"redis://:{self.REDIS_PASSWORD}@{self.REDIS_HOST}"
             f":{self.REDIS_PORT}/{self.REDIS_DB}"
         )
+
 
 class DatabaseSettings(BaseSettings):
     """Database settings."""

@@ -20,8 +20,8 @@ async def get_hello(
     """Start dialog data getter."""
     username = html.quote(event_from_user.full_name)
     return {
-        "hello_user": i18n.hello.user(username=username),
-        "button1": i18n.button.button(),
-        "button2": i18n.button.transition_map(),
-        "button3": i18n.button.transition_calc(),
+        "hello_user": i18n.dialog.start.prompt.text(username=username),
+        "button1": i18n.dialog.start.button.tolerance(),
+        "button2": i18n.dialog.start.button.old_tolerance(),
+        "button3": i18n.dialog.start.button.conditions(),
     }

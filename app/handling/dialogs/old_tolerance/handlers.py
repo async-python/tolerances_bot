@@ -39,7 +39,7 @@ async def on_text_received(
         )
     )
     await message.answer(
-        i18n.map.tolerance.found_text(list=related_tolerances_list)
+        i18n.old.tolerance.found_text(list=related_tolerances_list)
     )
     await dialog_manager.next()
 

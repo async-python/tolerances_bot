@@ -18,7 +18,7 @@ async def get_first_window_info(
 ) -> dict[str, str]:
     """Getter for first window."""
     return {
-        "map_answer": i18n.map.tolerance.invite_text(),
+        "map_answer": i18n.old.tolerance.invite_text(),
     }
 
 
@@ -30,7 +30,7 @@ async def get_second_window_info(
 ) -> dict[str, str]:
     """Getter for second window."""
     return {
-        "next_step": i18n.next.step(),
-        "continue_step": i18n.ContinueAction.step(),
-        "back_step": i18n.back.step(),
+        "next_step": i18n.tolerance.prompt.next.text(),
+        "continue_step": i18n.transition.button.continue_dialog(),
+        "return_prev": i18n.transition.button.return_prev(),
     }

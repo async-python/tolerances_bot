@@ -39,7 +39,7 @@ conditions_start_dialog = Dialog(
             ),
         ),
         Button(
-            text=Format("{back_step}"),
+            text=Format("{return_prev}"),
             id="conditions_calc_button_back",
             on_click=on_button_return_clicked,
         ),

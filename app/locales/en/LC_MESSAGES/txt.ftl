@@ -1,15 +1,12 @@
-hello-user = Hello { $username }. Choose an action.
+### Start dialog
+dialog-start-prompt-text = Hello { $username }. Choose an action.
+dialog-start-button-tolerance = Find dimensional tolerance.
+dialog-start-button-old_tolerance = Find mapping for OSST tolerance.
+dialog-start-button-conditions = Calculate cutting conditions.
 
-button-button = Find dimensional tolerance.
-button-transition_map = Find mapping for OSST tolerance.
-button-transition_calc = Calculate cutting conditions.
-
-button-pressed = You pressed the button.
-
-no-copy = This type of update is not supported by the send_copy method.
-
-text-method1 = Enter the tolerance value e.g 20H7.
-
+### Tolerance dialog
+tolerance-prompt-text = Enter the tolerance value e.g 20H7.
+tolerance-prompt-next-text = You can do next:
 tolerance-answer =
     upper deviation = {$upper}
     lower deviation = {$lower}
@@ -17,23 +14,10 @@ tolerance-answer =
     <b>avg size = {$avg}</b>
     min size = {$min}
 
-next-step = You can do next:
+### Old tolerance texts
 
-ContinueAction-step = Continue
-
-back-step = Return
-
-### Steps
-
-step-calc-first-message = Choose operation type:
-step-calc-first-milling-button = Milling
-step-calc-first-drilling-button = Drilling
-step-calc-first-turning-button = Turning
-
-### Map tolerance texts
-
-map-tolerance-invite_text = Enter a russian OSST tolerance name.
-map-tolerance-found_text = Next tolerances found: {$list}.
+old-tolerance-invite_text = Enter a russian OSST tolerance name.
+old-tolerance-found_text = Next tolerances found: {$list}.
 
 ### Handle errors
 
@@ -50,16 +34,12 @@ messages-conditions-value_not_float = The value isn't a number.
 messages-conditions-value_not_int = The value can't be a float number.
 messages-conditions-wrong_value = The value must be greater than 0.
 
-errors-not_found = ❌ Not found: { $name }
-errors-conflict = ⚠️ Conflict: { $name }
-errors-unauthorized = 🔒 Unauthorized: { $name }
-errors-forbidden = 🚫 Forbidden: { $name }
-errors-bad_request = ⚠️ Bad request: { $name }
-errors-unavailable_service = ⚠️ Unavailable service: { $name }
-errors-validation_error = ⚠️ Validation error: { $name }
-errors-unexpected_error = 🚨 Unexpected error, try again.
-
 ### Conditions dialogs.
+
+conditions-start-prompt = Choose operation type:
+conditions-start-button-milling = Milling
+conditions-start-button-drilling = Drilling
+conditions-start-button-turning = Turning
 
 conditions-prompt-tool_diameter-text = Input a tool diameter:
 conditions-prompt-part_diameter-text = Input a part diameter:
@@ -70,19 +50,20 @@ conditions-prompt-feed_per_tooth-text = Input feed per tooth:
 conditions-prompt-feed_per_rev-text = Input feed per rev:
 conditions-prompt-feed_rate-text = Input feed rate:
 
-conditions-milling-tool_diameter-text = Tool diameter: {$value} mm.
-conditions-milling-cutting_speed-text = Cutting speed: {$value} m/min.
-conditions-milling-spindle_speed-text = Spindle speed: {$value} rev/min.
-conditions-milling-number_of_teeth-text = Number of teeth: {$value} pieces.
-conditions-milling-feed_per_tooth-text = Feed per tooth: {$value} mm.
-conditions-milling-feed_rate-text = Feed rate: {$value} mm/min.
+conditions-common-tool_diameter-text = Tool diameter: {$value} mm.
+conditions-common-cutting_speed-text = Cutting speed: {$value} m/min.
+conditions-common-spindle_speed-text = Spindle speed: {$value} rev/min.
+conditions-common-number_of_teeth-text = Number of teeth: {$value} pieces.
+conditions-common-feed_per_tooth-text = Feed per tooth: {$value} mm.
+conditions-common-feed_rate-text = Feed rate: {$value} mm/min.
 conditions-common-feed_per_rev-text = Feed per rev: {$value} mm/rev.
 conditions-common-part_diameter-text = Part diameter: {$value} mm.
 
 
-### Common
+### Common transitions
 
 transition-button-forward = Forward ▶️
 transition-button-back = ◀️ Back
 transition-button-cancel = Quit
 transition-button-return_prev = Return
+transition-button-continue_dialog = Continue

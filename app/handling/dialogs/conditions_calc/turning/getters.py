@@ -19,12 +19,12 @@ FIELD_MAP = {
     "tool_diameter": lambda i18n,
     val: i18n.conditions.common.part_diameter.text(value=val),
     "cutting_speed": lambda i18n,
-    val: i18n.conditions.milling.cutting_speed.text(value=val),
+    val: i18n.conditions.common.cutting_speed.text(value=val),
     "spindle_speed": lambda i18n,
-    val: i18n.conditions.milling.spindle_speed.text(value=val),
+    val: i18n.conditions.common.spindle_speed.text(value=val),
     "feed_per_tooth": lambda i18n,
     val: i18n.conditions.common.feed_per_rev.text(value=val),
-    "feed_rate": lambda i18n, val: i18n.conditions.milling.feed_rate.text(
+    "feed_rate": lambda i18n, val: i18n.conditions.common.feed_rate.text(
         value=val
     ),
 }

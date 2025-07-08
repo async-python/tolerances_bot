@@ -23,7 +23,7 @@ from app.handling.dialogs.conditions_calc.turning.dialogs import (
     conditions_turning_dialog,
 )
 from app.handling.dialogs.find_tolerance.dialogs import find_tolerance_dialog
-from app.handling.dialogs.map_tolerance.dialogs import map_tolerance_dialog
+from app.handling.dialogs.old_tolerance.dialogs import map_tolerance_dialog
 from app.handling.dialogs.start.dialogs import start_dialog
 from app.handling.handlers.commands import commands_router
 from app.middlewares.i18n import TranslatorRunnerMiddleware

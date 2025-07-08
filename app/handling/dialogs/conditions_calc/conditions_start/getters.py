@@ -18,9 +18,9 @@ async def get_first_window_info(
 ) -> dict[str, str]:
     """Getter for second window."""
     return {
-        "first_message": i18n.step.calc.first.message(),
-        "next_step_milling": i18n.step.calc.first.milling.button(),
-        "next_step_turning": i18n.step.calc.first.turning.button(),
-        "next_step_drilling": i18n.step.calc.first.drilling.button(),
-        "back_step": i18n.back.step(),
+        "first_message": i18n.conditions.start.prompt(),
+        "next_step_milling": i18n.conditions.start.button.milling(),
+        "next_step_turning": i18n.conditions.start.button.turning(),
+        "next_step_drilling": i18n.conditions.start.button.drilling(),
+        "return_prev": i18n.transition.button.return_prev(),
     }
