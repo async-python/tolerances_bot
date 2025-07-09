@@ -5,7 +5,7 @@ from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict
 
-from app.constants.db_enums import SystemType
+from app.constants.model_enums import SystemType
 from app.schemas import OldToleranceRepoSchema, RangeRepoSchema
 
 

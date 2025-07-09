@@ -1,5 +1,6 @@
 """Tolerance values database table."""
 
+from decimal import Decimal
 from uuid import UUID as _PY_UUID
 
 from sqlalchemy import ForeignKey, UniqueConstraint
@@ -32,5 +33,5 @@ class ToleranceValue(Base, UUIDMixin, TimestampMixin):
             ondelete="CASCADE",
         ),
     )
-    upper_value: Mapped[float]
-    lower_value: Mapped[float]
+    upper_value: Mapped[Decimal]
+    lower_value: Mapped[Decimal]

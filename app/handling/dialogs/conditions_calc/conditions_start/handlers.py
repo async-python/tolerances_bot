@@ -17,7 +17,7 @@ async def on_button_return_clicked(
     dialog_manager: DialogManager,
 ) -> None:
     """Go to start window."""
-    await dialog_manager.start(
+    return await dialog_manager.start(
         state=StartSG.start,
         mode=StartMode.RESET_STACK,
     )
@@ -29,7 +29,7 @@ async def on_button_mill_clicked(
     dialog_manager: DialogManager,
 ) -> None:
     """Go to milling conditions_calc dialog."""
-    await dialog_manager.start(
+    return await dialog_manager.start(
         state=ConditionsMillingSG.window_1,
     )
 
@@ -40,7 +40,7 @@ async def on_button_turning_clicked(
     dialog_manager: DialogManager,
 ) -> None:
     """Go to turning conditions_calc dialog."""
-    await dialog_manager.start(
+    return await dialog_manager.start(
         state=ConditionsTurningSG.window_1,
         data={
             "turning": {
@@ -56,7 +56,7 @@ async def on_button_drilling_clicked(
     dialog_manager: DialogManager,
 ) -> None:
     """Go to drilling conditions_calc dialog."""
-    await dialog_manager.start(
+    return await dialog_manager.start(
         state=ConditionsDrillingSG.window_1,
         data={
             "drilling": {

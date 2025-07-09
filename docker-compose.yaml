@@ -9,11 +9,11 @@ volumes:
   redis_data:
 
 services:
-  bot_db:
-    container_name: bot_db
+  db:
+    container_name: db
     image: postgres:17
     ports:
-      - 5432:5432
+      - "5432:5432"
     env_file:
       - .env
     environment:
@@ -25,13 +25,13 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
 
-  db_redis:
-    container_name: bot_db_redis
+  redis:
+    container_name: redis
     image: redis:alpine
     restart: always
-    entrypoint: redis-server --appendonly yes --replica-read-only no --requirepass ${APP_REDIS_PASSWORD}
+    entrypoint: redis-server --appendonly yes --replica-read-only no --requirepass ${DBR_REDIS_PASSWORD}
     ports:
-      - 6379:6379
+      - "6379:6379"
     expose:
       - 6379
     env_file:

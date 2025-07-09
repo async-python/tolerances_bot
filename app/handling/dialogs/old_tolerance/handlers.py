@@ -41,7 +41,7 @@ async def on_text_received(
     await message.answer(
         i18n.old.tolerance.found_text(list=related_tolerances_list)
     )
-    await dialog_manager.next()
+    return await dialog_manager.next()
 
 
 async def on_button_continue_clicked(
@@ -50,7 +50,7 @@ async def on_button_continue_clicked(
     dialog_manager: DialogManager,
 ) -> None:
     """Return back window."""
-    await dialog_manager.back()
+    return await dialog_manager.back()
 
 
 async def on_button_return_clicked(
@@ -59,7 +59,7 @@ async def on_button_return_clicked(
     dialog_manager: DialogManager,
 ) -> None:
     """Go to start window."""
-    await dialog_manager.start(
+    return await dialog_manager.start(
         state=StartSG.start,
         mode=StartMode.RESET_STACK,
     )

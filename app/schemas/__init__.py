@@ -1,4 +1,5 @@
 # old tolerance
+from .conditions.conditions import ConditionSchema
 from .old_tolerance.data_schemas import (OldToleranceCreateSchema,
                                          OldToleranceMappingShema,
                                          OldToleranceSearchIdShema,
@@ -31,5 +32,6 @@ from .tolerance_value.data_schemas import (ToleranceValueCreateSchema,
                                            ToleranceValueSearchSchema)
 from .tolerance_value.repository_schemas import ToleranceValueRepoSchema
 from .tolerance_value.response_schemas import ToleranceValueResponseSchema
+
 
 OldToleranceRepoRelatedSchema.model_rebuild()

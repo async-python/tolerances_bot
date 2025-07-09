@@ -4,7 +4,7 @@ from uuid import UUID, uuid4
 
 from pydantic import BaseModel, Field
 
-from app.constants.db_enums import SystemType
+from app.constants.model_enums import SystemType
 
 
 class ToleranceCreateSchema(BaseModel):

@@ -1,9 +1,10 @@
 """Conditions controller."""
 
+from decimal import Decimal
 from enum import Enum
 from typing import TYPE_CHECKING
 
-from app.handling.shemas.conditions import ConditionSchema
+from app.schemas import ConditionSchema
 from app.utils.calculators import (
     calculate_spindle_speed,
     calculate_cutting_speed,
@@ -67,7 +68,7 @@ class ConditionsController:
             i18n=i18n,
         )
         value = (
-            float(new_value.replace(",", "."))
+            Decimal(new_value.replace(",", "."))
             if kind_of_value != ValueType.NUMBER_OF_TEETH
             else int(new_value)
         )
@@ -114,6 +115,7 @@ class ConditionsController:
                     cutting_speed=conditions_model.cutting_speed,
                     tool_diameter=conditions_model.tool_diameter,
                 )
+        return
 
     @classmethod
     async def _process_cutting_speed(
@@ -131,6 +133,7 @@ class ConditionsController:
                     spindle_speed=conditions_model.spindle_speed,
                     tool_diameter=conditions_model.tool_diameter,
                 )
+        return
 
     @classmethod
     async def _process_feed_rate(
@@ -150,6 +153,7 @@ class ConditionsController:
                     feed_per_tooth=conditions_model.feed_per_tooth,
                     number_of_teeth=conditions_model.number_of_teeth,
                 )
+        return
 
     @classmethod
     async def _process_feed_per_tooth(
@@ -171,3 +175,4 @@ class ConditionsController:
                         number_of_teeth=conditions_model.number_of_teeth,
                     )
                 )
+        return

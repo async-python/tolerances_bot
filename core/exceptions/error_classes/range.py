@@ -1,5 +1,6 @@
 """Range exceptions."""
 
+from decimal import Decimal
 from typing import TYPE_CHECKING
 
 from core.exceptions.base_exceptions import NotFoundError
@@ -14,7 +15,7 @@ class RangeException:
 
     @staticmethod
     async def raise_exception_if_not_found(
-        target_value: float,
+        target_value: Decimal,
         tolerance: type["ToleranceRepoRelatedRangesSchema"],
         i18n: "TranslatorRunner",
     ) -> bool:

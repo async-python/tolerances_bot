@@ -1,5 +1,6 @@
 """Range Controller module."""
 
+from decimal import Decimal
 from typing import TYPE_CHECKING
 from uuid import UUID
 
@@ -16,7 +17,7 @@ class RangeController:
     @classmethod
     async def process_and_validate_range_ids(
         cls: object,
-        target_value: float,
+        target_value: Decimal,
         tolerance: type["ToleranceRepoRelatedRangesSchema"],
         i18n: "TranslatorRunner",
     ) -> list[UUID]:

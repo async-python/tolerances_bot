@@ -16,4 +16,6 @@ async def process_start_command(
     dialog_manager: DialogManager,
 ) -> None:
     """Command Start handler."""
-    await dialog_manager.start(state=StartSG.start, mode=StartMode.RESET_STACK)
+    return await dialog_manager.start(
+        state=StartSG.start, mode=StartMode.RESET_STACK
+    )

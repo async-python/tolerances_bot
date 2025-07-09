@@ -18,10 +18,10 @@ class ToleranceValueException:
         i18n: "TranslatorRunner",
     ) -> bool:
         """Raises an exception if wrong tolerance deviations."""
-        if (
-            not tolerance_value
-            or tolerance_value.upper_value is None
-            or tolerance_value.lower_value is None
-        ):
-            raise NotFoundError(name=i18n.messages.deviation_unavailable())
-        return True
+        if tolerance_value:
+            if (
+                tolerance_value.upper_value is not None
+                and tolerance_value.lower_value is not None
+            ):
+                return True
+        raise NotFoundError(name=i18n.messages.deviation_unavailable())

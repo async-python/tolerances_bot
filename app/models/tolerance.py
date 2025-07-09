@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 from sqlalchemy import CheckConstraint, String, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship, validates
 
-from app.constants.db_enums import SystemType
+from app.constants.model_enums import SystemType
 from core.database import Base, TimestampMixin, UUIDMixin
 
 if TYPE_CHECKING:

@@ -77,7 +77,7 @@ async def on_text_received(
         f"<pre>{answer}</pre>",
         parse_mode="HTML",
     )
-    await dialog_manager.next()
+    return await dialog_manager.next()
 
 
 async def on_button_continue_clicked(
@@ -95,7 +95,7 @@ async def on_button_return_clicked(
     dialog_manager: DialogManager,
 ) -> None:
     """Go to start window."""
-    await dialog_manager.start(
+    return await dialog_manager.start(
         state=StartSG.start,
         mode=StartMode.RESET_STACK,
     )

@@ -8,7 +8,7 @@ import pandas as pd
 from more_itertools import chunked
 from sqlalchemy.testing.plugin.plugin_base import logging
 
-from app.constants.db_enums import SystemType
+from app.constants.model_enums import SystemType
 from app.repositories.main_repository import repository
 from app.schemas import (
     OldToleranceCreateSchema,

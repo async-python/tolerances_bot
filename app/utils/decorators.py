@@ -5,7 +5,11 @@ from functools import wraps
 from typing import Any
 
 
-def inject_resources(handler: Callable) -> Coroutine:
+def inject_resources(
+    handler: Callable,
+) -> Callable[
+    [tuple[Any, ...], dict[str, dict]], Coroutine[Any, Any, Coroutine]
+]:
     """Inject translator_runner and session to any handler."""
 
     @wraps(handler)
@@ -14,7 +18,7 @@ def inject_resources(handler: Callable) -> Coroutine:
         **kwargs: dict,
     ) -> Coroutine:
         """Adds translator_runner and session to handler."""
-        _, _, dialog_manager = args
+        dialog_manager = args[2]
         i18n = dialog_manager.middleware_data.get("i18n")
         session = dialog_manager.middleware_data.get("session")
         return await handler(

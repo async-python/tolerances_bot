@@ -1,5 +1,6 @@
 """ToleranceValue input schemas."""
 
+from decimal import Decimal
 from uuid import UUID, uuid4
 
 from pydantic import BaseModel, Field
@@ -11,8 +12,8 @@ class ToleranceValueCreateSchema(BaseModel):
     id: UUID = Field(default_factory=uuid4)
     tolerance_id: UUID
     range_id: UUID
-    upper_value: float
-    lower_value: float
+    upper_value: Decimal
+    lower_value: Decimal
 
 
 class ToleranceValueSearchSchema(BaseModel):

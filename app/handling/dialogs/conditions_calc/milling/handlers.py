@@ -36,7 +36,9 @@ async def _process_milling_conditions(
         conditions=data,
         i18n=i18n,
     )
-    dialog_manager.dialog_data.update({"milling": result.model_dump()})
+    return dialog_manager.dialog_data.update(
+        {"milling": result.model_dump(mode="json")}
+    )
 
 
 @inject_resources
@@ -54,7 +56,7 @@ async def on_diameter_received(
         dialog_manager=dialog_manager,
         i18n=i18n,
     )
-    await dialog_manager.next()
+    return await dialog_manager.next()
 
 
 @inject_resources
@@ -72,7 +74,7 @@ async def on_cutting_speed_received(
         dialog_manager=dialog_manager,
         i18n=i18n,
     )
-    await dialog_manager.switch_to(state=ConditionsMillingSG.window_4)
+    return await dialog_manager.switch_to(state=ConditionsMillingSG.window_4)
 
 
 @inject_resources
@@ -90,7 +92,7 @@ async def on_spindle_speed_received(
         dialog_manager=dialog_manager,
         i18n=i18n,
     )
-    await dialog_manager.switch_to(state=ConditionsMillingSG.window_4)
+    return await dialog_manager.switch_to(state=ConditionsMillingSG.window_4)
 
 
 @inject_resources
@@ -108,7 +110,7 @@ async def on_teeth_number_received(
         dialog_manager=dialog_manager,
         i18n=i18n,
     )
-    await dialog_manager.next()
+    return await dialog_manager.next()
 
 
 @inject_resources
@@ -126,7 +128,7 @@ async def on_feed_per_tooth_received(
         dialog_manager=dialog_manager,
         i18n=i18n,
     )
-    await dialog_manager.next()
+    return await dialog_manager.next()
 
 
 @inject_resources
@@ -138,7 +140,7 @@ async def on_feed_rate_received(
     session: AsyncSession,
 ) -> None:
     """Calculate milling conditions if feed rate changed."""
-    await _process_milling_conditions(
+    return await _process_milling_conditions(
         message=message,
         value_type=ValueType.FEED_RATE,
         dialog_manager=dialog_manager,
@@ -152,7 +154,7 @@ async def go_quit(
     dialog_manager: DialogManager,
 ) -> None:
     """Switch to previous window."""
-    await dialog_manager.start(
+    return await dialog_manager.start(
         state=StartSG.start,
         mode=StartMode.RESET_STACK,
     )
@@ -164,7 +166,7 @@ async def go_back(
     dialog_manager: DialogManager,
 ) -> None:
     """Switch to previous window."""
-    await dialog_manager.back()
+    return await dialog_manager.back()
 
 
 async def go_next(
@@ -173,7 +175,7 @@ async def go_next(
     dialog_manager: DialogManager,
 ) -> None:
     """Switch to next window."""
-    await dialog_manager.next()
+    return await dialog_manager.next()
 
 
 async def go_window_1(
@@ -182,7 +184,7 @@ async def go_window_1(
     dialog_manager: DialogManager,
 ) -> None:
     """Switch to window 1."""
-    await dialog_manager.switch_to(state=ConditionsMillingSG.window_1)
+    return await dialog_manager.switch_to(state=ConditionsMillingSG.window_1)
 
 
 async def go_window_2(
@@ -191,7 +193,7 @@ async def go_window_2(
     dialog_manager: DialogManager,
 ) -> None:
     """Switch to window 2."""
-    await dialog_manager.switch_to(state=ConditionsMillingSG.window_2)
+    return await dialog_manager.switch_to(state=ConditionsMillingSG.window_2)
 
 
 async def go_window_3(
@@ -200,7 +202,7 @@ async def go_window_3(
     dialog_manager: DialogManager,
 ) -> None:
     """Switch to window 3."""
-    await dialog_manager.switch_to(state=ConditionsMillingSG.window_3)
+    return await dialog_manager.switch_to(state=ConditionsMillingSG.window_3)
 
 
 async def go_window_4(
@@ -209,7 +211,7 @@ async def go_window_4(
     dialog_manager: DialogManager,
 ) -> None:
     """Switch to window 4."""
-    await dialog_manager.switch_to(state=ConditionsMillingSG.window_4)
+    return await dialog_manager.switch_to(state=ConditionsMillingSG.window_4)
 
 
 async def go_window_5(
@@ -218,7 +220,7 @@ async def go_window_5(
     dialog_manager: DialogManager,
 ) -> None:
     """Switch to window 5."""
-    await dialog_manager.switch_to(state=ConditionsMillingSG.window_5)
+    return await dialog_manager.switch_to(state=ConditionsMillingSG.window_5)
 
 
 async def go_window_6(
@@ -227,7 +229,7 @@ async def go_window_6(
     dialog_manager: DialogManager,
 ) -> None:
     """Switch to window 6."""
-    await dialog_manager.switch_to(state=ConditionsMillingSG.window_6)
+    return await dialog_manager.switch_to(state=ConditionsMillingSG.window_6)
 
 
 async def go_return(
@@ -236,7 +238,7 @@ async def go_return(
     dialog_manager: DialogManager,
 ) -> None:
     """Return to parent dialog."""
-    await dialog_manager.start(
+    return await dialog_manager.start(
         state=ConditionsStartSG.start,
         mode=StartMode.RESET_STACK,
     )

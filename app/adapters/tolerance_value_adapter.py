@@ -1,5 +1,6 @@
 """Tolerance Value Adapter module."""
 
+from decimal import Decimal
 from typing import TYPE_CHECKING
 from uuid import UUID
 
@@ -16,7 +17,7 @@ class ToleranceValueAdapter:
 
     @staticmethod
     async def get_tolerance_value(
-        target_value: float,
+        target_value: Decimal,
         tolerance_id: UUID,
         range_ids: list[UUID],
         session: AsyncSession,

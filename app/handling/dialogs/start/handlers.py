@@ -15,7 +15,7 @@ async def button_start_find_tolerance_click(
     dialog_manager: DialogManager,
 ) -> None:
     """Starts find tolerance dialog."""
-    await dialog_manager.start(state=FindToleranceSG.start)
+    return await dialog_manager.start(state=FindToleranceSG.start)
 
 
 async def button_start_map_tolerance_click(
@@ -24,7 +24,7 @@ async def button_start_map_tolerance_click(
     dialog_manager: DialogManager,
 ) -> None:
     """Starts mapping tolerance dialog."""
-    await dialog_manager.start(state=MapToleranceSG.start)
+    return await dialog_manager.start(state=MapToleranceSG.start)
 
 
 async def button_start_calc_conditions_click(
@@ -33,4 +33,4 @@ async def button_start_calc_conditions_click(
     dialog_manager: DialogManager,
 ) -> None:
     """Starts conditions dialog."""
-    await dialog_manager.start(state=ConditionsStartSG.start)
+    return await dialog_manager.start(state=ConditionsStartSG.start)

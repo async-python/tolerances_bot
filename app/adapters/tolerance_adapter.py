@@ -1,5 +1,6 @@
 """Tolerance Adapter module."""
 
+from decimal import Decimal
 from typing import TYPE_CHECKING
 
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -20,7 +21,7 @@ class ToleranceAdapter:
         text: str,
         i18n: "TranslatorRunner",
         session: AsyncSession,
-    ) -> tuple[float, type["ToleranceRepoRelatedRangesSchema"] | None]:
+    ) -> tuple[Decimal, type["ToleranceRepoRelatedRangesSchema"] | None]:
         """Returns tolerance data from db."""
         target_value, letter, quality = await parse_tolerance(text, i18n)
         response = await repository.tolerance.get_tolerance_related_ranges(

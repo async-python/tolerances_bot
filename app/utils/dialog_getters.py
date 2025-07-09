@@ -3,10 +3,8 @@
 from aiogram_dialog import DialogManager
 from fluentogram import TranslatorRunner
 from aiogram.types import User
-from app.handling.shemas.conditions import ConditionSchema
+from app.schemas import ConditionSchema
 from collections.abc import Callable
-
-PLUG = "__"
 
 
 async def get_data_window_generic(

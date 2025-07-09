@@ -15,11 +15,11 @@ class ToleranceRepository(Executor):
 
     async def create_tolerance(
         self: type[Executor],
-        data: dict,
+        values: dict,
         session: AsyncSession,
     ) -> ToleranceRepoSchema | None:
         """Create Tolerance in database function."""
-        query = insert(Tolerance).values(**data).returning(Tolerance)
+        query = insert(Tolerance).values(**values).returning(Tolerance)
         return await self.get_record(
             query=query,
             schema=ToleranceRepoSchema,
